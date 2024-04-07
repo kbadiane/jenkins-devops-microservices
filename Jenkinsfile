@@ -17,13 +17,15 @@ pipeline {
 	environment{
 		dockerHome = tool 'myDocker'
 		mavenHome = tool 'myMaven'
-		PATH = "$dockerHome/bin:$mavenHome/bin:$PATH"
+		jdkHome = tool 'myJDK'
+		PATH = "$dockerHome/bin:$mavenHome/bin:$jdkHome/bin:$PATH"
 	}
 	stages {
 		stage('Checkout') {
 			steps {
 				sh 'mvn --version'
 				sh 'docker version'
+				sh 'java --version'
 				echo "Build"
 				echo "PATH - $PATH"
 				echo "BUILD_NUMBER - $env.BUILD_NUMBER"
