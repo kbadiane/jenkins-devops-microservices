@@ -17,8 +17,8 @@ pipeline {
 	environment{
 		//dockerHome = tool 'myDocker'
 		mavenHome = tool 'myMaven'
-		//jdkHome = tool 'myJDK'
-		PATH = "$mavenHome/bin:$PATH"
+		GradleHome = tool 'myGradle'
+		PATH = "$mavenHome/bin:$GradleHome/bin:$PATH"
 	}
 	stages {
 		stage('Checkout') {
